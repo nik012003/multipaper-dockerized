@@ -1,0 +1,6 @@
+version: "0.1"
+services:
+  multipaper:
+    build: .
+    ports:
+      - "35353:35353"

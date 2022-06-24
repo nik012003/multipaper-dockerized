@@ -1,0 +1,7 @@
+version: "0.1"
+services:
+  multipaper:
+    build: .
+    ports:
+      - "25577:25577"
+    network_mode: "host" 
