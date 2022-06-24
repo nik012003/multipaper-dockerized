@@ -2,4 +2,6 @@ version: "0.1"
 services:
   multipaper:
     build: .
+    ports:
+      - "30066:30066"
     network_mode: "host"        
