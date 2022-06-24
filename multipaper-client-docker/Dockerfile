@@ -11,5 +11,6 @@ ENV MULTIPAPERURL="https://multipaper.io/api/v2/projects/multipaper/versions/1.1
 RUN curl $MULTIPAPERURL --output multipaper.jar
 COPY ./paper.yml .
 COPY ./server.properties .
+COPY ./multipaper.yml .
 EXPOSE 30066
 CMD ["java", "-Dcom.mojang.eula.agree=true", "-jar", "multipaper.jar"]

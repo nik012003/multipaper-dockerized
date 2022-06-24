@@ -3,5 +3,6 @@ services:
   multipaper:
     build: .
     ports:
-      - "30066:30066"
-    network_mode: "host"        
+      - 30066-30072:30066
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

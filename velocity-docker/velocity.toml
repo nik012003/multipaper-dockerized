@@ -74,9 +74,18 @@ enable-player-address-logging = true
 # represents the IP address of the server to connect to.
 server-01 = "127.0.0.1:30066"
 server-02 = "127.0.0.1:30067"
-
+server-03 = "127.0.0.1:30068"
+server-04 = "127.0.0.1:30069"
+server-05 = "127.0.0.1:30070"
+server-06 = "127.0.0.1:30071"
+server-07 = "127.0.0.1:30072"
 # In what order we should try servers when a player logs in or is kicked from a server.
 try = [
+  "server-07",
+  "server-06",
+  "server-05",
+  "server-04",
+  "server-03",
   "server-02",
   "server-01"
 ]
@@ -103,7 +112,7 @@ compression-level = -1
 
 # How fast (in milliseconds) are clients allowed to connect after the last connection? By
 # default, this is three seconds. Disable this by setting this to 0.
-login-ratelimit = 3000
+login-ratelimit = 0
 
 # Specify a custom timeout for connection timeouts here. The default is five seconds.
 connection-timeout = 5000
