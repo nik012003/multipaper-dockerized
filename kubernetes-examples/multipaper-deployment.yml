@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multipaper-server 
+  labels:
+    app: multipaper-instance
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: multipaper-instance
+  template:
+    metadata:
+      labels:
+        app: multipaper-instance
+    spec:
+      containers:
+      - name: multipaper-instance
+        image: nik012003/multipaper-server:latest
+        imagePullPolicy: Always
+        env:
+        - name: MASTER_ADDRESS
+          value: multipaper-master
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multipaper-master 
+  labels:
+    app: multipaper-master
+spec:
+  selector:
+    matchLabels:
+      app: multipaper-master
+  template:
+    metadata:
+      labels:
+        app: multipaper-master
+    spec:
+      containers:
+      - name: multipaper-master
+        image: nik012003/multipaper-master:latest
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: multipaper-master
+spec:
+  ports:
+  - port: 35353
+  selector:
+    app: multipaper-master

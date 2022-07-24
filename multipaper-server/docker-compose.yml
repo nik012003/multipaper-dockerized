@@ -1,8 +1,6 @@
-version: "0.1"
+version: "3.9"
 services:
   multipaper:
     build: .
-    ports:
-      - 30066-30072:30066
     extra_hosts:
       - "host.docker.internal:host-gateway"
