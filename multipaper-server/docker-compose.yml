@@ -2,5 +2,8 @@ version: "3.9"
 services:
   multipaper:
     build: .
+    environment:
+      - MASTER_ADDRESS=127.0.0.1
+      - SERVER_PROPIETIES={"online-mode":"false","allow-flight":"true","max-players":"200"}
     extra_hosts:
       - "host.docker.internal:host-gateway"

@@ -9,15 +9,13 @@ ENV MASTER_ADDRESS $MASTER_ADDRESS
 
 ARG SERVER_PROPIETIES
 ENV SERVER_PROPIETIES $SERVER_PROPIETIES
-
 WORKDIR /opt/minecraft
 
 #Download current MultiPaper 
 ENV MULTIPAPERURL="https://multipaper.io/api/v2/projects/multipaper/versions/$version/builds/$build/"
-RUN echo $MULTIPAPERURL 
 RUN curl "$MULTIPAPERURL/downloads/"$(curl $MULTIPAPERURL | jq -r '.downloads.application.name') --output multipaper.jar
 
 COPY ./spigot.yml .
-RUN echo $SERVER_PROPIETIES | jq -r 'keys[] as $k | "\($k)=\(.[$k] )"' > server.properties
+COPY ./start.sh .
 
-CMD java -Dcom.mojang.eula.agree=true -DmultipaperMasterAddress=$MASTER_ADDRESS:35353 -jar multipaper.jar
+CMD sh start.sh
