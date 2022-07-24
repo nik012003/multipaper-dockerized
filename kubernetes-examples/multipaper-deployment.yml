@@ -21,6 +21,8 @@ spec:
         env:
         - name: MASTER_ADDRESS
           value: multipaper-master
+        - name: SERVER_PROPIETIES
+          value: "{'online-mode':'true','allow-flight':'true','max-players'=200}"
 ---
 apiVersion: apps/v1
 kind: Deployment
