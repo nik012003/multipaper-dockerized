@@ -39,10 +39,17 @@ spec:
       labels:
         app: multipaper-master
     spec:
+      volumes:
+        - name: master-volume
+          hostPath:
+            path: /opt/master-volume
       containers:
       - name: multipaper-master
         image: nik012003/multipaper-master:latest
         imagePullPolicy: Always
+        volumeMounts:
+        - name: master-volume
+          mountPath: /opt/storage
 ---
 apiVersion: v1
 kind: Service
